@@ -1,0 +1,17 @@
+services:
+  server:
+    build: .
+    container_name: cut_server
+    user: 1000:1000
+    volumes:
+      - .:/app
+    ports:
+      - 8000:8000
+    links:
+      - database
+
+  database:
+    image: mariadb:latest
+    container_name: cut_database
+    env_file:
+      - .env.mysql
