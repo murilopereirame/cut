@@ -1,8 +1,15 @@
-<script lang="typescript">
-    import {BootstrapToast, ToastContainer} from "svelte-toasts";
+<script lang="ts">
+    import "./App.css"
+    import Home from './pages/Home.svelte';
+    import Result from './pages/Result.svelte';
+    import Router from 'svelte-spa-router';
+		import { Toaster } from 'svelte-french-toast';
+
+    const routes = {
+        '/': Home,
+        '/result': Result,
+    }
 </script>
 
-<h1>Hello!</h1>
-<ToastContainer placement="bottom-left" let:data={data}>
-    <BootstrapToast {data}/>
-</ToastContainer>
+<Router {routes}/>
+<Toaster />

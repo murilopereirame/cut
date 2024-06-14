@@ -1,0 +1,16 @@
+@import url(https://fonts.bunny.net/css?family=akshar:300,400,500,600,700);
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+body {
+    background-color: #f6f7f9;
+}

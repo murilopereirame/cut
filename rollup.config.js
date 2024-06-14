@@ -3,10 +3,10 @@ import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
-import css from 'rollup-plugin-css-only';
 import typescript from '@rollup/plugin-typescript';
 import preprocess from 'svelte-preprocess';
-
+import postcss from 'rollup-plugin-postcss';
+import svg from 'rollup-plugin-svg';
 const production = !process.env.ROLLUP_WATCH;
 
 function serve() {
@@ -46,9 +46,17 @@ export default {
             },
             preprocess: preprocess()
         }),
-        // we'll extract any component CSS out into
-        // a separate file - better for performance
-        css({ output: 'bundle.css' }),
+        svg({base64: true}),
+        postcss({
+            config: {
+                path: './postcss.config.cjs',
+            },
+            extensions: ['.css'],
+            minimize: true,
+            inject: {
+                insertAt: 'top',
+            },
+        }),
         typescript({ sourceMap: !production }),
         // If you have external dependencies installed from
         // npm, you'll most likely need these plugins. In
