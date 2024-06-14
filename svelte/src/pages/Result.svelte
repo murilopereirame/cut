@@ -44,16 +44,16 @@
 </script>
 
 <div class="w-full h-full flex justify-center items-center flex-col">
-	<Card class="w-3/5">
+	<Card class="w-4/5 md:w-3/5">
 		<h1 class="font-black font-akshar text-bright-gray-500 text-4xl py-2 px-8 text-center">URL Shortened!</h1>
 		<div class="flex w-full items-center px-2 pb-2">
 			<input readonly value={url} class="w-full bottom-0 top-0 h-10 border-pelorous-300 rounded-l-md border-2 border-r-0" type="url" />
 			<button on:click={copyToClipboard} class="uppercase hover:bg-pelorous-600 bg-pelorous-300 text-white font-bold px-4 py-2 h-10 rounded-r-md">Copy</button>
 		</div>
-		<div class="flex w-full pb-2 px-2">
-			<div class="min-w-48 min-h-56 flex flex-col items-center justify-center">
+		<div class="flex w-full pb-2 px-2 flex-col md:flex-row">
+			<div class="min-w-48 min-h-56 flex flex-col items-center justify-center mt-2 md:mt-0">
 				{#if qrCodePng}
-					<img src={qrCodePng} alt="QR Code" />
+					<img class="w-full" src={qrCodePng} alt="QR Code" />
 					<a href={qrCodePng} download="qrcode.png" class="text-center mt-2 bg-pelorous-300 w-full rounded-md text-white">Download PNG</a>
 				{:else}
 					<div
@@ -63,7 +63,7 @@
 					<span class="text-pelorous-500 mt-2">Loading...</span>
 				{/if}
 			</div>
-			<div class="ml-2 flex flex-col">
+			<div class="flex flex-col mt-2 md:ml-2 md:mt-0">
 				<div>
 					<h3 class="text-xl font-bold">Original URL</h3>
 					<a class="underline text-pelorous-500" href={ogUrl} target="_blank" rel="noopener noreferrer">{ogUrl}</a>
