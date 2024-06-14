@@ -4,6 +4,7 @@
     import Result from './pages/Result.svelte';
     import Router from 'svelte-spa-router';
 		import { Toaster } from 'svelte-french-toast';
+		import Footer from './components/Footer.svelte';
 
     const routes = {
         '/': Home,
@@ -11,5 +12,8 @@
     }
 </script>
 
-<Router {routes}/>
-<Toaster />
+<div class="flex flex-col relative h-full min-h-[100vh] justify-center">
+	<Router {routes}/>
+	<Toaster />
+	<Footer class="justify-self-end flex bottom-0" />
+</div>

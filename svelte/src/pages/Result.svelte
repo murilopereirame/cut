@@ -43,7 +43,7 @@
 	generateQrCode()
 </script>
 
-<div class="w-full h-full flex justify-center items-center flex-col">
+<div class="w-full h-full flex justify-center items-center flex-col flex-1">
 	<Card class="w-4/5 md:w-3/5">
 		<h1 class="font-black font-akshar text-bright-gray-500 text-4xl py-2 px-8 text-center">URL Shortened!</h1>
 		<div class="flex w-full items-center px-2 pb-2">

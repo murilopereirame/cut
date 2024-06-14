@@ -46,7 +46,7 @@ const features: FeatureItem[] = [{
 }]
 
 </script>
-<div class="w-full h-full flex justify-center items-center flex-col my-4">
+<div class="w-full h-full flex justify-center items-center flex-col my-4 flex-1">
 	<Card class="w-4/5 md:w-3/5">
 		<h1 class="text-2xl font-black font-akshar text-bright-gray-500 py-2 px-8 text-center md:text-4xl">Enter a URL and start shortening!</h1>
 		<div class="flex w-full items-center px-2 pb-2">
@@ -54,6 +54,19 @@ const features: FeatureItem[] = [{
 			<button on:click={shortenUrl} class="uppercase hover:bg-pelorous-600 bg-pelorous-300 text-white font-bold px-4 py-2 h-10 rounded-r-md">Short</button>
 		</div>
 		<Accordion class="w-1/3 ml-2">
+			<svg
+				slot="icon"
+				xmlns="http://www.w3.org/2000/svg"
+				fill="none"
+				viewBox="0 0 24 24"
+				stroke-width="1.5"
+				stroke="currentColor">
+				<path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+			</svg>
+
 			<h2 slot="title" class="font-bold mr-2">Options</h2>
 			<label><input type="checkbox" bind:checked={protect}/> Enable password protection</label>
 
