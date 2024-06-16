@@ -11,7 +11,9 @@ services:
       - database
 
   database:
-    image: mariadb:latest
+    image: mysql:latest
     container_name: cut_database
+    ports:
+      - 3306:3306
     env_file:
       - .env.mysql

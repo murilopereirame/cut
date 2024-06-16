@@ -1,66 +1,67 @@
 {
-    "name": "codeigniter4/framework",
-    "description": "The CodeIgniter framework v4",
-    "license": "MIT",
+    "name": "laravel/laravel",
     "type": "project",
-    "homepage": "https://codeigniter.com",
-    "support": {
-        "forum": "https://forum.codeigniter.com/",
-        "source": "https://github.com/codeigniter4/CodeIgniter4",
-        "slack": "https://codeigniterchat.slack.com"
-    },
+    "description": "The skeleton application for the Laravel framework.",
+    "keywords": ["laravel", "framework"],
+    "license": "MIT",
     "require": {
-        "php": "^8.1",
-        "ext-intl": "*",
-        "ext-mbstring": "*",
-        "laminas/laminas-escaper": "^2.13",
-        "psr/log": "^3.0"
+        "php": "^8.2",
+        "ext-openssl": "*",
+        "laravel/framework": "^11.9",
+        "laravel/tinker": "^2.9",
+        "paragonie/halite": "^5"
     },
     "require-dev": {
-        "codeigniter/coding-standard": "^1.7",
-        "fakerphp/faker": "^1.9",
-        "friendsofphp/php-cs-fixer": "^3.47.1",
-        "kint-php/kint": "^5.0.4",
-        "mikey179/vfsstream": "^1.6",
-        "nexusphp/cs-config": "^3.6",
-        "phpunit/phpunit": "^10.5.16",
-        "predis/predis": "^1.1 || ^2.0"
-    },
-    "suggest": {
-        "ext-curl": "If you use CURLRequest class",
-        "ext-dom": "If you use TestResponse",
-        "ext-exif": "If you run Image class tests",
-        "ext-fileinfo": "Improves mime type detection for files",
-        "ext-gd": "If you use Image class GDHandler",
-        "ext-imagick": "If you use Image class ImageMagickHandler",
-        "ext-libxml": "If you use TestResponse",
-        "ext-memcache": "If you use Cache class MemcachedHandler with Memcache",
-        "ext-memcached": "If you use Cache class MemcachedHandler with Memcached",
-        "ext-mysqli": "If you use MySQL",
-        "ext-oci8": "If you use Oracle Database",
-        "ext-pgsql": "If you use PostgreSQL",
-        "ext-readline": "Improves CLI::input() usability",
-        "ext-redis": "If you use Cache class RedisHandler",
-        "ext-simplexml": "If you format XML",
-        "ext-sodium": "If you use Encryption SodiumHandler",
-        "ext-sqlite3": "If you use SQLite3",
-        "ext-sqlsrv": "If you use SQL Server",
-        "ext-xdebug": "If you use CIUnitTestCase::assertHeaderEmitted()"
+        "fakerphp/faker": "^1.23",
+        "laravel/pint": "^1.13",
+        "laravel/sail": "^1.26",
+        "mockery/mockery": "^1.6",
+        "nunomaduro/collision": "^8.0",
+        "phpunit/phpunit": "^11.0.1"
     },
     "autoload": {
         "psr-4": {
-            "CodeIgniter\\": "system/"
-        },
-        "exclude-from-classmap": [
-            "**/Database/Migrations/**"
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi",
+            "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
+            "@php artisan migrate --graceful --ansi"
         ]
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
     },
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": true
+        }
     },
-    "scripts": {
-        "test": "phpunit"
-    }
+    "minimum-stability": "stable",
+    "prefer-stable": true
 }
