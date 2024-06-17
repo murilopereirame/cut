@@ -4,6 +4,7 @@
 	import Card from '../components/Card.svelte';
 	import toast from 'svelte-french-toast';
 	import QRCode from "qrcode"
+    import Spinner from '../components/Spinner.svelte';
 	let url: string = ""
 	let ogUrl: string = ""
 	let diff: number = 0
@@ -47,7 +48,7 @@
 	<Card class="w-4/5 md:w-3/5">
 		<h1 class="font-black font-akshar text-bright-gray-500 text-4xl py-2 px-8 text-center">URL Shortened!</h1>
 		<div class="flex w-full items-center px-2 pb-2">
-			<input readonly value={url} class="w-full bottom-0 top-0 h-10 border-pelorous-300 rounded-l-md border-2 border-r-0" type="url" />
+			<input readonly value={url} class="w-full bottom-0 top-0 h-10 border-pelorous-300 rounded-l-md border-2 border-r-0 pl-1" type="url" />
 			<button on:click={copyToClipboard} class="uppercase hover:bg-pelorous-600 bg-pelorous-300 text-white font-bold px-4 py-2 h-10 rounded-r-md">Copy</button>
 		</div>
 		<div class="flex w-full pb-2 px-2 flex-col md:flex-row">
@@ -56,10 +57,7 @@
 					<img class="w-full" src={qrCodePng} alt="QR Code" />
 					<a href={qrCodePng} download="qrcode.png" class="text-center mt-2 bg-pelorous-300 w-full rounded-md text-white">Download PNG</a>
 				{:else}
-					<div
-						class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-pelorous-500 motion-reduce:animate-[spin_1.5s_linear_infinite]"
-						role="status">
-					</div>
+					<Spinner />
 					<span class="text-pelorous-500 mt-2">Loading...</span>
 				{/if}
 			</div>

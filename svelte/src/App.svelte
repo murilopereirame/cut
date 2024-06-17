@@ -5,10 +5,13 @@
     import Router from 'svelte-spa-router';
 		import { Toaster } from 'svelte-french-toast';
 		import Footer from './components/Footer.svelte';
+    import Unlock from './pages/Unlock.svelte';
+    import LoadingOverlay from './components/LoadingOverlay.svelte';
 
     const routes = {
         '/': Home,
         '/result': Result,
+        '/unlock': Unlock
     }
 </script>
 
@@ -17,3 +20,4 @@
 	<Toaster />
 	<Footer class="justify-self-end flex bottom-0" />
 </div>
+<LoadingOverlay />

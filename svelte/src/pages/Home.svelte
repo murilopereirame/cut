@@ -9,7 +9,10 @@ import Eye from '../icons/Eye.svelte';
 import EyeSlash from '../icons/EyeSlash.svelte';
 import { slide } from 'svelte/transition';
 import { push } from 'svelte-spa-router';
-import { isProtected, originalUrl, shortenedUrl } from '../Store';
+import { isLoading, isProtected, originalUrl, shortenedUrl } from '../Store';
+import Services, { type CutError, type ShortenedUrl } from '../services';
+import toast from 'svelte-french-toast';
+import type { AxiosError } from 'axios';
 
 interface FeatureItem {
 	title: string;
@@ -19,16 +22,37 @@ interface FeatureItem {
 
 let protect = false
 let showPassword = false
+let url = ''
+let password = ''
 
 const togglePasswordShow = () => {
 	showPassword = !showPassword
 }
 
-const shortenUrl = () => {
-	shortenedUrl.set("https://cut.dev.br/QxSDE2")
-	originalUrl.set("https://test.com.br/How-To-Encrypt-Data")
-	isProtected.set(protect)
-	push('/result')
+const shortenUrl = async () => {
+    isLoading.set(true)
+    try {
+        const shortenedUrlData = (await Services.shortenUrl(
+            url,
+            password.length > 0 ? password : undefined
+        )).data.result as ShortenedUrl
+
+        originalUrl.set(url)
+        shortenedUrl.set(shortenedUrlData.full_url)
+        isProtected.set(shortenedUrlData.encrypted)
+
+        return push('/result')
+    } catch (err: unknown) {
+        if ((err as AxiosError).response?.data) {
+            const errorResponse = (err as AxiosError).response?.data as CutError
+            toast.error(errorResponse.message)
+        } else {
+            toast.error("Failed to shorten url. Check console for more info")
+        }
+        console.log(err)
+    } finally {
+        isLoading.set(false)
+    }
 }
 
 const features: FeatureItem[] = [{
@@ -50,7 +74,7 @@ const features: FeatureItem[] = [{
 	<Card class="w-4/5 md:w-3/5">
 		<h1 class="text-2xl font-black font-akshar text-bright-gray-500 py-2 px-8 text-center md:text-4xl">Enter a URL and start shortening!</h1>
 		<div class="flex w-full items-center px-2 pb-2">
-			<input class="w-full bottom-0 top-0 h-10 border-pelorous-300 border-2 border-r-0 rounded-l-md" type="url" />
+			<input bind:value={url} class="w-full bottom-0 top-0 h-10 border-pelorous-300 border-2 border-r-0 rounded-l-md pl-1" type="url" />
 			<button on:click={shortenUrl} class="uppercase hover:bg-pelorous-600 bg-pelorous-300 text-white font-bold px-4 py-2 h-10 rounded-r-md">Short</button>
 		</div>
 		<Accordion class="w-1/3 ml-2">
@@ -72,7 +96,7 @@ const features: FeatureItem[] = [{
 
 			{#if protect}
 				<div transition:slide class="rounded-md border-2 border-pelorous-300 w-fit flex items-center">
-					<input class="rounded-l-md" type={showPassword ? 'text' : 'password'}>
+					<input  {...{ type: showPassword ? 'text' : 'password' }} bind:value={password} class="rounded-l-md pl-1">
 					<button class="w-fit mx-1" on:click={togglePasswordShow}>
 						{#if showPassword}
 							<Eye />

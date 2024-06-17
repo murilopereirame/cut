@@ -49,6 +49,7 @@
 	"type": "module",
 	"dependencies": {
 		"@castlenine/svelte-qrcode": "^2.2.0",
+		"axios": "^1.7.2",
 		"qrcode": "^1.5.3",
 		"sirv-cli": "^2.0.2",
 		"svelte-french-toast": "^1.2.0",
