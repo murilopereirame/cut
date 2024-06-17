@@ -6,6 +6,7 @@ use App\Models\ShortenedUrl;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Contracts\Encryption\EncryptException;
 use Illuminate\Database\RecordsNotFoundException;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Laminas\Escaper\Exception\RuntimeException;
 use Random\RandomException;
 use SebastianBergmann\Invoker\TimeoutException;
@@ -61,7 +62,6 @@ class ShortenService
 
     /**
      * @throws RandomException
-     * @throws RuntimeException
      * @throws SodiumException
      */
     private function encrypt_url(string $url, string $passphrase): string {
@@ -124,29 +124,41 @@ class ShortenService
 
     public function retrieve_destination(string $code)
     {
-        $url = ShortenedUrl::query()->where('code', $code)->first()->get();
+        $url = ShortenedUrl::query()->where('code', $code)->first();
 
-        if (!$url) {throw new RecordsNotFoundException("Could not find a URL with code $code");}
+        if (!$url) {
+            throw new HttpResponseException(
+                response()->json([
+                    "status" => "NOT_FOUND",
+                    "message" => "Could not find a URL with code $code"
+                ], 404));
+        }
         if ($url->encrypted) {unset($url->destination);}
 
         return $url;
     }
 
+    /**
+     * @throws SodiumException
+     */
     public function unlock_destination(string $code, string $passphrase) {
         $url = ShortenedUrl::query()->where('code', $code)->first();
 
-        if (!$url) {throw new RecordsNotFoundException("Could not find a URL with code $code");}
-        if ($url->encrypted) {
-            $url->destination = "";
+        if (!$url) {throw new HttpResponseException(
+            response()->json([
+                "status" => "NOT_FOUND",
+                "message" => "Could not find a URL with code $code"
+            ], 404));
         }
 
+        $url->destination = $this->decrypt_url($url->destination, $passphrase);
         return $url;
     }
 
     /**
      * @throws RandomException|SodiumException
      */
-    public function shorten(string $url, string $passphrase = null): ShortenedUrl {
+    public function shorten(string $url, string $passphrase = null) {
         $shortened_url = $this->generate_unique_url();
         $encrypted = $passphrase != null;
         $destination = !$encrypted ? $url : $this->encrypt_url(

@@ -15,6 +15,7 @@ Route::prefix('v1')->group(function () {
     })->name('up');
     Route::controller(ShortenController::class)->prefix('shorten')->group(function () {
        Route::post('short', 'short_url');
+       Route::post('unlock', 'unlock');
     });
 });
 
