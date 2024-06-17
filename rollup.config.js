@@ -53,9 +53,7 @@ export default {
             },
             extensions: ['.css'],
             minimize: true,
-            inject: {
-                insertAt: 'top',
-            },
+            extract: 'bundle.css'
         }),
         typescript({ sourceMap: !production }),
         // If you have external dependencies installed from

@@ -7,9 +7,8 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel='icon' type='image/png' href='/favicon.ico'>
-    <link rel='stylesheet' href='/global.css'>
     <link rel='stylesheet' href='/build/bundle.css'>
-    <title>Svelte App</title>
+    <title>Cut - URL Shortener</title>
     <base href="/">
 </head>
 <body>

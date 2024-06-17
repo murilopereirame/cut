@@ -4,7 +4,7 @@
     import { onDestroy } from 'svelte';
     let showLoading = false
 
-    const unsubscribe = isLoading.subscribe((isLoading) => {console.log("Is loading: ", isLoading); showLoading = isLoading})
+    const unsubscribe = isLoading.subscribe((isLoading) => showLoading = isLoading)
     onDestroy(() => unsubscribe())
 </script>
 
