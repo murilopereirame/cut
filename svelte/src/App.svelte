@@ -7,11 +7,13 @@
 		import Footer from './components/Footer.svelte';
     import Unlock from './pages/Unlock.svelte';
     import LoadingOverlay from './components/LoadingOverlay.svelte';
+    import Terms from './pages/Terms.svelte';
 
     const routes = {
         '/': Home,
         '/result': Result,
-        '/unlock': Unlock
+        '/unlock': Unlock,
+        '/terms-of-service': Terms
     }
 </script>
 
