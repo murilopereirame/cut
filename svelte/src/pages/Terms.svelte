@@ -4,7 +4,7 @@
 
 <div class="w-full h-full flex justify-center items-center flex-col flex-1 my-20">
     <Card class="w-4/5 md:w-3/5">
-        <h1 class="text-left font-black font-akshar text-bright-gray-500 text-4xl py-2">Terms Of Service</h1>
+        <h1 class="text-center font-black font-akshar text-bright-gray-500 text-4xl py-2">Terms Of Service</h1>
         <p>
             The terms of service outline the rules for accessing and using CUT, including any content functionality and
             services offered by the site.
