@@ -45,7 +45,7 @@
 </script>
 
 <div class="w-full h-full flex justify-center items-center flex-col flex-1">
-	<Card class="w-4/5 md:w-3/5">
+	<Card class="max-w-2xl w-4/5 md:w-3/5">
 		<h1 class="font-black font-akshar text-bright-gray-500 text-4xl py-2 px-8 text-center">URL Shortened!</h1>
 		<div class="flex w-full items-center px-2 pb-2">
 			<input readonly value={url} class="w-full bottom-0 top-0 h-10 border-pelorous-300 rounded-l-md border-2 border-r-0 pl-1" type="url" />
@@ -61,10 +61,10 @@
 					<span class="text-pelorous-500 mt-2">Loading...</span>
 				{/if}
 			</div>
-			<div class="flex flex-col mt-2 md:ml-2 md:mt-0">
+			<div class="flex flex-col mt-2 md:ml-2 md:mt-0 min-w-0">
 				<div>
 					<h3 class="text-xl font-bold">Original URL</h3>
-					<a class="underline text-pelorous-500" href={ogUrl} target="_blank" rel="noopener noreferrer">{ogUrl}</a>
+					<a class="break-words whitespace-pre-wrap underline text-pelorous-500" href={ogUrl} target="_blank" rel="noopener noreferrer">{ogUrl}</a>
 					<h3 class="text-lg font-bold mt-2">Length Difference</h3>
 					<span>{diff} characters {diff > 0 ? "shortener" : "bigger"}</span>
 					<h3 class="text-lg font-bold mt-2">Password protected</h3>

@@ -19,6 +19,10 @@ if (!urlCode) {
 
 const requestUnlock = async () => {
     try {
+        if (passphrase.length === 0) {
+            return toast.error('Insert the password')
+        }
+
         isLoading.set(true)
         if(!urlCode) {
             return toast.error("No url code provided");

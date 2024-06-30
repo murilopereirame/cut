@@ -7,6 +7,10 @@ import typescript from '@rollup/plugin-typescript';
 import preprocess from 'svelte-preprocess';
 import postcss from 'rollup-plugin-postcss';
 import svg from 'rollup-plugin-svg';
+import replace from '@rollup/plugin-replace';
+import { config } from "dotenv";
+import { resolve as path_resolve } from 'node:path';
+
 const production = !process.env.ROLLUP_WATCH;
 
 function serve() {
@@ -39,6 +43,15 @@ export default {
         file: 'public/build/main.js'
     },
     plugins: [
+        replace({
+            preventAssignment: true,
+            process: JSON.stringify({
+               env: {
+                   isProd: production,
+                   ...config({path: path_resolve(process.cwd(), 'svelte', '.env')}).parsed
+               }
+            }),
+        }),
         svelte({
             compilerOptions: {
                 // enable run-time checks when not in production

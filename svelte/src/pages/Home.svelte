@@ -30,8 +30,14 @@ const togglePasswordShow = () => {
 }
 
 const shortenUrl = async () => {
-    isLoading.set(true)
+    if (url.length === 0) {
+        return toast.error('Insert the url to be shortened')
+    } else if (protect && password.length === 0) {
+        return toast.error('Insert the password to protect the URL or disable password protection')
+    }
+
     try {
+        isLoading.set(true)
         const shortenedUrlData = (await Services.shortenUrl(
             url,
             password.length > 0 ? password : undefined

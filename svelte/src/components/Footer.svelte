@@ -1,6 +1,8 @@
 <script lang="ts">
 	import Hamburger from '../icons/Hamburger.svelte';
 	import { slide } from 'svelte/transition';
+    import {link} from 'svelte-spa-router'
+    import active from 'svelte-spa-router/active'
 
 	let visible = false
 	const toggleVisibility = () => {
@@ -12,10 +14,10 @@
         transition:slide
         class="{visible ? 'max-h-32' : 'max-h-0'} md:flex justify-center transition-all delay-150 duration-300 overflow-hidden md:max-h-fit">
         <div class="flex flex-col items-center md:flex-row md:gap-5">
-            <a href="/">Shorten</a>
-            <a href="/">Report URL</a>
-            <a href="/">Terms of Use</a>
-            <a href="/">Privacy Policy</a>
+            <a href="/" use:link use:active>Shorten</a>
+            <a href="/report" use:link use:active>Report URL</a>
+            <a href="/terms-of-service" use:link use:active>Terms of Use</a>
+            <a href="/privacy-policy" use:link use:active>Privacy Policy</a>
         </div>
     </div>
 	<h2 class="my-1 w-full flex justify-center">

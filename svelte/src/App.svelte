@@ -8,12 +8,18 @@
     import Unlock from './pages/Unlock.svelte';
     import LoadingOverlay from './components/LoadingOverlay.svelte';
     import Terms from './pages/Terms.svelte';
+    import Privacy from './pages/Privacy.svelte';
+    import Report from './pages/Report.svelte';
+    import ReportList from './pages/ReportList.svelte';
 
     const routes = {
         '/': Home,
         '/result': Result,
         '/unlock': Unlock,
-        '/terms-of-service': Terms
+        '/terms-of-service': Terms,
+        '/privacy-policy': Privacy,
+        '/report': Report,
+        '/reports': ReportList
     }
 </script>
 
