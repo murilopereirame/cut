@@ -17,7 +17,7 @@ return new class extends Migration
             $table->uuid('url_id');
             $table->string('reason', 300);
             $table->enum('status', TakedownStatus::toArray())->default(TakedownStatus::PENDING->asValue());
-            $table->text('observations')->nullable();
+            $table->string('password')->nullable();
 
             $table->foreign('url_id')->references('id')->on('shorten_urls')->onDelete('cascade');
             $table->timestamps();

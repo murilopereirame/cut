@@ -4,8 +4,9 @@ namespace App\Models;
 
 use App\Traits\Uuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class TakedownRequest
+class TakedownRequest extends Model
 {
     use HasFactory, Uuid;
 
@@ -17,9 +18,9 @@ class TakedownRequest
      */
     protected $fillable = [
         'url_id',
+        'password',
         'reason',
         'status',
-        'observations'
     ];
 
      public function shortened_url() {
