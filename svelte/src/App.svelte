@@ -28,6 +28,5 @@
 	<Router {routes}/>
 	<Toaster />
 	<Footer class="justify-self-end flex bottom-0" />
-    <BitcoinDonate />
 </div>
 <LoadingOverlay />
