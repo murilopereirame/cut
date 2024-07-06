@@ -54,7 +54,10 @@ export default {
             }),
         }),
         copy({
-            targets: [{src: 'svelte/static/*.png', dest: 'public/static'}],
+            targets: [
+                {src: 'svelte/static/*.png', dest: 'public/static'},
+                {src: 'svelte/static/icons/*', dest: 'public'}
+            ],
 
         }),
         svelte({
