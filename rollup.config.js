@@ -10,6 +10,7 @@ import svg from 'rollup-plugin-svg';
 import replace from '@rollup/plugin-replace';
 import { config } from "dotenv";
 import { resolve as path_resolve } from 'node:path';
+import copy from 'rollup-plugin-copy';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -52,6 +53,10 @@ export default {
                }
             }),
         }),
+        copy({
+            targets: [{src: 'svelte/static/*.png', dest: 'public/static'}],
+
+        }),
         svelte({
             compilerOptions: {
                 // enable run-time checks when not in production
@@ -90,7 +95,7 @@ export default {
 
         // If we're building for production (npm run build
         // instead of npm run dev), minify
-        production && terser()
+        production && terser(),
     ],
     watch: {
         clearScreen: false

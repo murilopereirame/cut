@@ -4,12 +4,13 @@ import axios from 'axios';
 
 axios.defaults.baseURL = '/api/v1/'
 
+
+const {env: __env} = process
+export type {Writable}
+export {__env}
+
 const app = new App({
     target: document.body
 });
 
-const {env: __env} = process
-export type {Writable}
-
-export {__env}
 export default app;

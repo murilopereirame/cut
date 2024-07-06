@@ -22,7 +22,7 @@
     </div>
 	<h2 class="my-1 w-full flex justify-center">
 		<button
-			class="group relative flex items-center text-left text-base transition "
+			class="group relative flex items-center text-left text-base transition md:cursor-text md:select-text"
 			type="button" on:click={toggleVisibility}>
 			<span class="mr-2 font-bold">Made with <span class="text-sm">❤</span> by 0x6D70</span>
 			<span
