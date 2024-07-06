@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel='icon' type='image/png' href='/favicon.ico'>
     <link rel='stylesheet' href='/build/bundle.css'>
-    <title>Cut - URL Shortener</title>
+    <title>Shrtu - URL Shortener</title>
     <base href="/">
 </head>
 <body>

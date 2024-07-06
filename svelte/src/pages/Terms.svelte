@@ -6,13 +6,13 @@
     <Card class="w-4/5 md:w-3/5">
         <h1 class="text-center font-black font-akshar text-bright-gray-500 text-4xl py-2">Terms Of Service</h1>
         <p>
-            The terms of service outline the rules for accessing and using CUT, including any content functionality and
+            The terms of service outline the rules for accessing and using Shrtu, including any content functionality and
             services offered by the site.
             <br /><br />
             Before using the site, make sure to carefully read the terms of service. This page explains the terms of use
-            for CUT, and by using the site, users are bound by these terms.
+            for Shrtu, and by using the site, users are bound by these terms.
             <br /><br />
-            CUT, the URL shortener service, is available to users of all countries and ages. However, it is prohibited
+            Shrtu, the URL shortener service, is available to users of all countries and ages. However, it is prohibited
             to create shortened URLs that redirect to:
             <br />
             <span class="ml-4">• Content spreading phishing, malware, or viruses</span><br/>
@@ -29,7 +29,7 @@
         </p>
         <h1 class="font-black font-akshar text-bright-gray-500 text-4xl py-2 left mt-6">Disclamer</h1>
         <p>
-            The free service provided by CUT has limitations, so we cannot guarantee uninterrupted, secure, or
+            The free service provided by Shrtu has limitations, so we cannot guarantee uninterrupted, secure, or
             error-free site or services. Neither employees nor owners will be held responsible for any errors or
             omissions on the site or any resulting damages.
         </p>
@@ -66,7 +66,7 @@
         </p>
         <h1 class="font-black font-akshar text-bright-gray-500 text-4xl py-2 mt-6">Terms Updates</h1>
         <p>
-            CUT reserves the right to update or modify these terms of use at any time. The most current version will
+            Shrtu reserves the right to update or modify these terms of use at any time. The most current version will
             always be accessible on this page.
         </p>
     </Card>

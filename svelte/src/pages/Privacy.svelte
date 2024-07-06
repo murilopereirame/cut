@@ -17,11 +17,11 @@
         <p>For the purposes of this Privacy Policy:</p>
         <ul class="flex flex-col ml-6 list-disc">
             <li>
-                <p><strong>Application</strong> refers to CUT, the software program provided by the Company.</p>
+                <p><strong>Application</strong> refers to Shrtu, the software program provided by the Company.</p>
             </li>
             <li>
                 <p><strong>Company</strong> (referred to as either &quot;the Company&quot;, &quot;We&quot;, &quot;Us&quot;
-                    or &quot;Our&quot; in this Agreement) refers to CUT.</p>
+                    or &quot;Our&quot; in this Agreement) refers to Shrtu.</p>
             </li>
             <li>
                 <p><strong>Country</strong> refers to: Brazil</p>
@@ -84,7 +84,7 @@
         <h2 class="text-left font-black font-akshar text-bright-gray-500 text-3xl py-2">Contact Us</h2>
         <p>If you have any questions about this Privacy Policy, You can contact us:</p>
         <ul>
-            <li>By email: support@cut.dev.br</li>
+            <li>By email: support@shrtu.io</li>
         </ul>
     </Card>
 </div>
