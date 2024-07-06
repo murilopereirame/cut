@@ -1,9 +1,13 @@
-<script lang="ts">
+    <script lang="ts">
 import Card from '../components/Card.svelte';
 import toast from 'svelte-french-toast';
 import { isLoading } from '../Store';
 import Services, { type CutError } from '../services';
 import type { AxiosError } from 'axios';
+
+import {link} from 'svelte-spa-router'
+import active from 'svelte-spa-router/active'
+
 let reason = ''
 let passphrase = ''
 let url = ''
@@ -62,6 +66,9 @@ const requestTakedown = async () => {
     <div class="w-4/5 md:w-3/5 mt-2">
         <p class="text-xs text-left">
             * Fields with this mark are required
+        </p>
+        <p class="text-xs text-left">
+            ** You can check reported URLs and their status <a class="text-pelorous-500 underline" href="/reports" use:link use:active>here</a>
         </p>
         <p class="text-xs text-left">
             ¹ We ask for the password to check the content of encrypted URLs before taking any action.<br/>
